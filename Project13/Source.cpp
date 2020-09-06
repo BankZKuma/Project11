@@ -3,6 +3,7 @@ float usd(float);
 float jpy(float);
 float convert(float baht, float (*p)(float));
 int main() {
+	int count = 0;
 	float collecTusd[10],collecTjpy[10];
 	float baht;
 	for (int i = 0; i < 5; i++) {
@@ -10,7 +11,14 @@ int main() {
 		scanf_s("%f", &baht);
 		collecTusd[i] = convert(baht, usd);
 		collecTjpy[i] = convert(baht, jpy);
-		printf("USD = %f\nYEN =%f\n", convert(baht, usd) * 90,convert(baht,jpy)*95);
+		if (count == 2 || count == 4) {
+			printf("USD = %f\nYEN = %f\n", convert(baht, usd)*
+				0.95, convert(baht, jpy)*0.90);
+		}
+		else {
+			printf("USD = %f\nYEN = %f\n", convert(baht, usd), convert(baht, jpy));
+		}
+		count++;
 	}
 	return 0;
 }
